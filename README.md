@@ -6,4 +6,10 @@ Aguarde maiores informações;
 
 -Thank you, guys;
 
+
+
+
+
+
+
 VAI CLAN!!
