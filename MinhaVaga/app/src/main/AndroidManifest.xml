@@ -18,6 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <meta-data android:name="DATABASE" android:value="bd1.db" />
+        <meta-data android:name="VERSION" android:value="0.1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.hgoncalves" />
     </application>
 
 </manifest>
