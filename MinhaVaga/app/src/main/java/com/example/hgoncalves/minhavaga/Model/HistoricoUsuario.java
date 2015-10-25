@@ -11,4 +11,6 @@ public class HistoricoUsuario extends SugarRecord<HistoricoUsuario> {
     public Vaga v;
     public String Data;
     public String Hora;
+
+
 }
