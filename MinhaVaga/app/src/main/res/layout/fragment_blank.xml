@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/post_name"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/get_name"
+            android:layout_width="150dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/post_id"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Profile ID" />
+
+        <TextView
+            android:id="@+id/get_id"
+            android:layout_width="150dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/post_url"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:text="Google Plus URL" />
+
+        <TextView
+            android:id="@+id/get_url"
+            android:layout_width="150dp"
+            android:layout_height="60dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ok_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="OK" />
+</LinearLayout>
