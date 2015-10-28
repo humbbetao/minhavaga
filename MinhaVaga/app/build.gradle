@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services-plus'
 
 android {
     compileSdkVersion 22
@@ -7,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.hgoncalves.minhavaga"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -36,11 +37,10 @@ dependencies {
 //    compile 'com.facebook.android:facebook-android-sdk:4.6.0' // apifacebook
     compile 'com.google.android.gms:play-services-identity:8.1.0'
     compile 'com.google.android.gms:play-services-plus:8.1.0'
-//    compile "com.android.support:support-v4:23.0.0"
-//    compile "com.android.support:support-v13:23.0.0"
-//    compile "com.android.support:cardview-v7:23.0.0"
-//    compile 'com.google.android.gms:play-services-location:7.3.0'
-//    compile 'com.google.android.gms:play-services-wearable:7.8.0'
+    compile 'com.google.android.gms:play-services-drive:8.1.0'
+    compile 'com.google.android.gms:play-services:8.1.0'
+    compile 'com.google.android.gms:play-services-maps:8.1.0'
+
 //    compile 'com.android.support:support-v13:23.0.1'
 }
 

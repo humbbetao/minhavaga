@@ -26,10 +26,14 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
 import java.io.InputStream;
+
+import static com.google.android.gms.plus.Plus.API;
+import static com.google.android.gms.plus.Plus.AccountApi;
+import static com.google.android.gms.plus.Plus.PeopleApi;
+import static com.google.android.gms.plus.Plus.SCOPE_PLUS_LOGIN;
 
 public class MainActivity extends Activity implements OnClickListener,
         ConnectionCallbacks, OnConnectionFailedListener {
@@ -80,9 +84,12 @@ public class MainActivity extends Activity implements OnClickListener,
         btnRevokeAccess.setOnClickListener(this);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
+
                 .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this).addApiIfAvailable(Plus.API)
-                .addScope(Plus.SCOPE_PLUS_LOGIN).build();
+                .addOnConnectionFailedListener(this)
+                .addApi(API)
+                .addScope(SCOPE_PLUS_LOGIN)
+                .build();
     }
 
     protected void onStart() {
@@ -185,13 +192,13 @@ public class MainActivity extends Activity implements OnClickListener,
      */
     private void getProfileInformation() {
         try {
-            if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
-                Person currentPerson = Plus.PeopleApi
+            if (PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
+                Person currentPerson = PeopleApi
                         .getCurrentPerson(mGoogleApiClient);
                 String personName = currentPerson.getDisplayName();
                 String personPhotoUrl = currentPerson.getImage().getUrl();
                 String personGooglePlusProfile = currentPerson.getUrl();
-                String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+                String email = AccountApi.getAccountName(mGoogleApiClient);
 
                 Log.e(TAG, "Name: " + personName + ", plusProfile: "
                         + personGooglePlusProfile + ", email: " + email
@@ -267,7 +274,7 @@ public class MainActivity extends Activity implements OnClickListener,
      */
     private void signOutFromGplus() {
         if (mGoogleApiClient.isConnected()) {
-            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+            AccountApi.clearDefaultAccount(mGoogleApiClient);
             mGoogleApiClient.disconnect();
             mGoogleApiClient.connect();
             updateUI(false);
@@ -279,8 +286,8 @@ public class MainActivity extends Activity implements OnClickListener,
      */
     private void revokeGplusAccess() {
         if (mGoogleApiClient.isConnected()) {
-            Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
-            Plus.AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
+            AccountApi.clearDefaultAccount(mGoogleApiClient);
+            AccountApi.revokeAccessAndDisconnect(mGoogleApiClient)
                     .setResultCallback(new ResultCallback<Status>() {
                         @Override
                         public void onResult(Status arg0) {
