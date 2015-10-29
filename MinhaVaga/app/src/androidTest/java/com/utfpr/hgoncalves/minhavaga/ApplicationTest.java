@@ -1,4 +1,4 @@
-package com.example.hgoncalves.minhavaga;
+package com.utfpr.hgoncalves.minhavaga;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
