@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">MinhaVaga</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_login">login</string>
+    <string name="update_status" />
+    <string name="post_image" />
+    <string name="error">ERRO</string>
+    <string name="facebook_app_id">1051113714919313</string>
+    <string name="title_activity_login_facebook">loginFacebook</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_loginfacebook">loginfacebook</string>
 </resources>
