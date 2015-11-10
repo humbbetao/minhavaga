@@ -61,8 +61,9 @@ public class loginfacebook extends FragmentActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
 
 
 }

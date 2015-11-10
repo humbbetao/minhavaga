@@ -1,5 +1,7 @@
 package com.example.hgoncalves.minhavaga.Model;
 
+import android.graphics.Bitmap;
+
 import com.orm.SugarRecord;
 
 /**
@@ -8,15 +10,19 @@ import com.orm.SugarRecord;
 class Usuario extends SugarRecord<Usuario> {
     public String nome;
     public String email;
-    public String senha;
-
+//    public String senha;
+    public byte[] picture;
+    public Bitmap pictureBitmap;
+    public String id;
+//    public String name;;
+//
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario(String nome, String email) {
         this.nome = nome;
         this.email = email;
-        this.senha = senha;
+//        this.senha = senha;
     }
 
     public String getNome() {
@@ -35,11 +41,11 @@ class Usuario extends SugarRecord<Usuario> {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
+//    public String getSenha() {
+//        return senha;
+//    }
+//
+//    public void setSenha(String senha) {
+//        this.senha = senha;
+//    }
 }
