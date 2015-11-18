@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.utfpr.hgoncalves.minhavaga"
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -21,14 +21,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     //sugarORM
     // apifacebook
     //
-//    compile 'com.android.support:support-v13:23.0.1'
+    //    compile 'com.android.support:support-v13:23.0.1'
     compile 'com.google.android.gms:play-services:8.1.0'
-    compile 'com.google.android.gms:play-services:8.1.0'
+    //    compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.github.satyan:sugar:1.3'
     compile 'com.facebook.android:facebook-android-sdk:4.6.0'
@@ -37,4 +37,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-drive:8.1.0'
     compile 'com.google.android.gms:play-services-maps:8.1.0'
     compile 'com.android.support:design:23.1.0'
+    //    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    //    compile 'com.android.support:support-v4:18.0.+'
+    compile files('src/main/java/Gson/gson-2.4.jar')
 }

@@ -1,4 +1,4 @@
-package com.example.hgoncalves.minhavaga.Model;
+package com.utfpr.hgoncalves.minhavaga.Model;
 
 import com.orm.SugarRecord;
 

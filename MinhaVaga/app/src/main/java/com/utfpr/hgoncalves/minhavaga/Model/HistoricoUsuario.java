@@ -1,6 +1,4 @@
-package com.example.hgoncalves.minhavaga.Model;
-
-import android.content.Entity;
+package com.utfpr.hgoncalves.minhavaga.Model;
 
 import com.orm.SugarRecord;
 

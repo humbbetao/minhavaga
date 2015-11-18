@@ -1,43 +1,147 @@
 package com.utfpr.hgoncalves.minhavaga.Activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.utfpr.hgoncalves.minhavaga.R;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.util.ArrayList;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Marker markerVagaVazia;
+    private Marker markerVagaOcupada;
 
+    private ArrayList<com.utfpr.hgoncalves.minhavaga.Model.Vaga> vagas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-    }
+
+
+}
+
+
 
     @Override
-    public void onMapReady(GoogleMap map) {
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(-24.043190, -52.378492), 16));
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        if(mMap!=null){
+            mMap.setMyLocationEnabled(true);
+        }
 
-        // You can customize the marker image using images bundled with
-        // your app, or dynamically generated bitmaps.
-        map.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.common_ic_googleplayservices))
-                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                .position(new LatLng(-24.043190, -52.378492)));
+
+//        mMap.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number34))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(-24.043190, -52.378492)));
+//
+//
+////        MapFragment mapFrag = (MapFragment) FragmentManager.FindFragmentById(Resource.Id.my_mapfragment_container);
+//
+//
+//        map.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number36))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(-24.043190, -52.378491)));
+
+
+        UiSettings ui = mMap.getUiSettings();
+        ui.setZoomControlsEnabled(true);
+
+        MarkerOptions MVagaVazia =  new MarkerOptions()
+                .icon(BitmapDescriptorFactory
+                        .fromResource(R.drawable.number7green))
+                .anchor(0.0f, 1.0f); // Anchors the marker on the bottom left
+
+        MVagaVazia.position(new LatLng(-24.043190, -52.378492));
+        MVagaVazia.draggable(true);
+
+
+
+        MarkerOptions MvagaOcupada  = new MarkerOptions()
+                .icon((BitmapDescriptorFactory
+                        .fromResource(R.drawable.number1red)))
+                .anchor(0.0f, 1.0f);
+        MvagaOcupada.position(new LatLng(-24.02, -52.378492));
+        MvagaOcupada.draggable(true);
+//        MarkerOptions mo = new MarkerOptions();
+//        mo.position(new LatLng(-24.045833, -52.382778));
+//        mo.draggable(true);
+
+        markerVagaVazia = mMap.addMarker(MVagaVazia);
+        markerVagaVazia.setDraggable(true);
+
+        markerVagaOcupada = mMap.addMarker(MvagaOcupada);
+        markerVagaOcupada.setDraggable(true);
+
+        if( markerVagaVazia.isDraggable()){
+            Log.e("Draggable", "Sim");
+            markerVagaVazia.setTitle("Vaga Vazias");
+            LatLng ln = getLocalizacaoVagaVaziaMarker();
+            markerVagaVazia.setPosition(ln);
+       } else {
+            Log.e("Draggable","No");
+        }
+
+        if( markerVagaOcupada.isDraggable()){
+            Log.e("Draggable", "Sim");
+            markerVagaOcupada.setTitle("Vaga Ocupadas");
+            LatLng ln = getLocalizacaoVagaOcupadaMarker();
+            markerVagaOcupada.setPosition(ln);
+        } else {
+            Log.e("Draggable","No");
+        }
+
     }
+
+    public LatLng getLocalizacaoVagaVaziaMarker() {
+        LatLng latlonge =  markerVagaVazia.getPosition();
+        return latlonge;
+    }
+    public LatLng getLocalizacaoVagaOcupadaMarker() {
+        LatLng latlonge =  markerVagaOcupada.getPosition();
+        return latlonge;
+    }
+
+
+//    @Override
+//    public void onMapReady(GoogleMap map) {
+//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(
+//                new LatLng(-24.043190, -52.378492), 6));
+//
+//        // You can customize the marker image using images bundled with
+//        // your app, or dynamically generated bitmaps.
+//        map.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number34))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(-24.043190, -52.378492)));
+//
+//
+////        MapFragment mapFrag = (MapFragment) FragmentManager.FindFragmentById(Resource.Id.my_mapfragment_container);
+//
+//
+//        map.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number36))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(-24.043190, -52.378491)));
+//
+//    }
 
     /**
      * Manipulates the map once available.

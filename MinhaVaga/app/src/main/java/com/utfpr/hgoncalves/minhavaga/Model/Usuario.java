@@ -1,13 +1,17 @@
-package com.example.hgoncalves.minhavaga.Model;
+package com.utfpr.hgoncalves.minhavaga.Model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
 /**
  * Created by hgoncalves on 22/10/15.
  */
-class Usuario extends SugarRecord<Usuario> {
+public class Usuario extends SugarRecord<Usuario> {
+    @SerializedName("nome")
     public String nome;
+    @SerializedName("email")
     public String email;
+    @SerializedName("senha")
     public String senha;
 
     public Usuario() {
