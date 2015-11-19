@@ -16,7 +16,16 @@
     string in this file.
     -->
     <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
-        AIzaSyCegfvEPrYyhJYiPawpuR53Ys6axX1GQAQ
+        <!--chave do humberto -->
+        <!--AIzaSyCegfvEPrYyhJYiPawpuR53Ys6axX1GQAQ-->
         <!--FE:05:2B:15:BD:57:EE:1B:1A:B8:5F:8E:84:8E:CF:36:2D:7D:90:25-->
+        <!--chave do higor-->
+        AIzaSyAGpaX01Bn0K-U1377RXAGFUoEn38rFbPU
+        <!-- chave do dodo-->
+        <!--AIzaSyC4MOr7cRW_p14dR4x_JV6y_bWgXXPjQJg-->
+        <!-- chave do tiago-->
+        <!--AIzaSyBud4nP1Hw8RWSkQqfvvBN5n__0ItfJ0kg-->
+        <!-- chave do caique-->
+
     </string>
 </resources>
