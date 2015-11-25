@@ -52,6 +52,16 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+<<<<<<< HEAD
+=======
+        <activity
+            android:name=".Activity.loginfacebook"
+            android:label="@string/title_activity_loginfacebook"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+        </activity>
+>>>>>>> 15d354d3a22e9a7bb5b7f189bde1b8e09c4e0ffb
         <!--<activity-->
             <!--android:name=".Activity.loginfacebook"-->
             <!--android:label="@string/app_name"-->
@@ -66,6 +76,7 @@
         <activity
             android:name=".Activity.MapsActivity"
             android:label="@string/title_activity_main2"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Activity.Splash"
@@ -75,6 +86,15 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+=======
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+>>>>>>> 15d354d3a22e9a7bb5b7f189bde1b8e09c4e0ffb
         </activity>
     </application>
 </manifest>

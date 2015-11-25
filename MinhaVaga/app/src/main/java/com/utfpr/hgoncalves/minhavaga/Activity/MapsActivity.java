@@ -3,7 +3,9 @@ package com.utfpr.hgoncalves.minhavaga.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -45,6 +47,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             mMap.setMyLocationEnabled(true);
         }
 
+
+    // Google map init block
+    CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+    customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+        @Override
+        public void onDrag(MotionEvent motionEvent) {
+            Log.d("ON_DRAG", String.format("ME: %s", motionEvent));
+            // Handle motion event:
+        }
+    });
+    GoogleMap map = customMapFragment.getMap();
+        LatLng sydney = new LatLng(-24.043190, -52.378492);
+        map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 //        mMap.addMarker(new MarkerOptions()
 //                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number34))
