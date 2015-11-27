@@ -7,94 +7,53 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <permission
-        android:name="com.example.gcm.permission.C2D_MESSAGE"
+    <permission android:name="com.example.gcm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <meta-data
-        android:name="DATABASE"
-        android:value="bd1.db" />
-    <meta-data
-        android:name="VERSION"
-        android:value="1" />
-    <meta-data
-        android:name="QUERY_LOG"
-        android:value="true" />
-    <meta-data
-        android:name="DOMAIN_PACKAGE_NAME"
-        android:value="com.utfpr.hgoncalves.minhavaga" />
-    <meta-data
-        android:name="com.google.android.gms.version"
+    <meta-data android:name="DATABASE" android:value="bd1.db" />
+    <meta-data android:name="VERSION" android:value="1" />
+    <meta-data android:name="QUERY_LOG" android:value="true" />
+    <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.utfpr.hgoncalves.minhavaga" />
+    <meta-data android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version" />
 
     <uses-permission android:name="com.utfpr.hgoncalves.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <application
-        android:allowBackup="true"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:supportsRtl="true" android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <!-- </activity> -->
-        <activity
-            android:name="com.facebook.FacebookActivity"
+        <activity android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-<<<<<<< HEAD
-=======
-        <activity
-            android:name=".Activity.loginfacebook"
-            android:label="@string/title_activity_loginfacebook"
-            android:theme="@style/AppTheme.NoActionBar" >
 
-
-        </activity>
->>>>>>> 15d354d3a22e9a7bb5b7f189bde1b8e09c4e0ffb
-        <!--<activity-->
-            <!--android:name=".Activity.loginfacebook"-->
-            <!--android:label="@string/app_name"-->
-            <!--android:theme="@style/AppTheme.NoActionBar">-->
-
-
-        <!--</activity>-->
-        <activity
-            android:name=".Activity.Main2Activity"
+        <activity android:name=".Activity.loginfacebook"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--<activity android:name=".Activity.loginfacebook" android:label="@string/app_name"-->
+            <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
+        <activity android:name=".Activity.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Activity.MapsActivity"
-            android:label="@string/title_activity_main2"
-<<<<<<< HEAD
+        <activity android:name=".Activity.MapsActivity" android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Activity.Splash"
-            android:label="@string/title_activity_splash"
+        <activity android:name=".Activity.Splash" android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-=======
-            android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
->>>>>>> 15d354d3a22e9a7bb5b7f189bde1b8e09c4e0ffb
+            </intent-filter>
         </activity>
     </application>
 </manifest>
+
