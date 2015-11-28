@@ -2,18 +2,12 @@ package com.utfpr.hgoncalves.minhavaga.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MotionEvent;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.utfpr.hgoncalves.minhavaga.R;
 
 import java.util.ArrayList;
@@ -48,81 +42,81 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
 
-    // Google map init block
-    CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-    customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
-        @Override
-        public void onDrag(MotionEvent motionEvent) {
-            Log.d("ON_DRAG", String.format("ME: %s", motionEvent));
-            // Handle motion event:
-        }
-    });
-    GoogleMap map = customMapFragment.getMap();
-        LatLng sydney = new LatLng(-24.043190, -52.378492);
-        map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-//        mMap.addMarker(new MarkerOptions()
-//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number34))
-//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-//                .position(new LatLng(-24.043190, -52.378492)));
+//    // Google map init block
+//    CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+//    customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+//        @Override
+//        public void onDrag(MotionEvent motionEvent) {
+//            Log.d("ON_DRAG", String.format("ME: %s", motionEvent));
+//            // Handle motion event:
+//        }
+////    });
+//    GoogleMap map = customMapFragment.getMap();
+//        LatLng sydney = new LatLng(-24.043190, -52.378492);
+//        map.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//
+////        mMap.addMarker(new MarkerOptions()
+////                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number34))
+////                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+////                .position(new LatLng(-24.043190, -52.378492)));
+////
+////
+//////        MapFragment mapFrag = (MapFragment) FragmentManager.FindFragmentById(Resource.Id.my_mapfragment_container);
+////
+////
+////        map.addMarker(new MarkerOptions()
+////                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number36))
+////                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+////                .position(new LatLng(-24.043190, -52.378491)));
 //
 //
-////        MapFragment mapFrag = (MapFragment) FragmentManager.FindFragmentById(Resource.Id.my_mapfragment_container);
+//        UiSettings ui = mMap.getUiSettings();
+//        ui.setZoomControlsEnabled(true);
+//
+//        MarkerOptions MVagaVazia =  new MarkerOptions()
+//                .icon(BitmapDescriptorFactory
+//                        .fromResource(R.drawable.number7green))
+//                .anchor(0.0f, 1.0f); // Anchors the marker on the bottom left
+//
+//        MVagaVazia.position(new LatLng(-24.043190, -52.378492));
+//        MVagaVazia.draggable(true);
 //
 //
-//        map.addMarker(new MarkerOptions()
-//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number36))
-//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-//                .position(new LatLng(-24.043190, -52.378491)));
-
-
-        UiSettings ui = mMap.getUiSettings();
-        ui.setZoomControlsEnabled(true);
-
-        MarkerOptions MVagaVazia =  new MarkerOptions()
-                .icon(BitmapDescriptorFactory
-                        .fromResource(R.drawable.number7green))
-                .anchor(0.0f, 1.0f); // Anchors the marker on the bottom left
-
-        MVagaVazia.position(new LatLng(-24.043190, -52.378492));
-        MVagaVazia.draggable(true);
-
-
-
-        MarkerOptions MvagaOcupada  = new MarkerOptions()
-                .icon((BitmapDescriptorFactory
-                        .fromResource(R.drawable.number1red)))
-                .anchor(0.0f, 1.0f);
-        MvagaOcupada.position(new LatLng(-24.02, -52.378492));
-        MvagaOcupada.draggable(true);
-//        MarkerOptions mo = new MarkerOptions();
-//        mo.position(new LatLng(-24.045833, -52.382778));
-//        mo.draggable(true);
-
-        markerVagaVazia = mMap.addMarker(MVagaVazia);
-        markerVagaVazia.setDraggable(true);
-
-        markerVagaOcupada = mMap.addMarker(MvagaOcupada);
-        markerVagaOcupada.setDraggable(true);
-
-        if( markerVagaVazia.isDraggable()){
-            Log.e("Draggable", "Sim");
-            markerVagaVazia.setTitle("Vaga Vazias");
-            LatLng ln = getLocalizacaoVagaVaziaMarker();
-            markerVagaVazia.setPosition(ln);
-       } else {
-            Log.e("Draggable","No");
-        }
-
-        if( markerVagaOcupada.isDraggable()){
-            Log.e("Draggable", "Sim");
-            markerVagaOcupada.setTitle("Vaga Ocupadas");
-            LatLng ln = getLocalizacaoVagaOcupadaMarker();
-            markerVagaOcupada.setPosition(ln);
-        } else {
-            Log.e("Draggable","No");
-        }
+//
+//        MarkerOptions MvagaOcupada  = new MarkerOptions()
+//                .icon((BitmapDescriptorFactory
+//                        .fromResource(R.drawable.number1red)))
+//                .anchor(0.0f, 1.0f);
+//        MvagaOcupada.position(new LatLng(-24.02, -52.378492));
+//        MvagaOcupada.draggable(true);
+////        MarkerOptions mo = new MarkerOptions();
+////        mo.position(new LatLng(-24.045833, -52.382778));
+////        mo.draggable(true);
+//
+//        markerVagaVazia = mMap.addMarker(MVagaVazia);
+//        markerVagaVazia.setDraggable(true);
+//
+//        markerVagaOcupada = mMap.addMarker(MvagaOcupada);
+//        markerVagaOcupada.setDraggable(true);
+//
+//        if( markerVagaVazia.isDraggable()){
+//            Log.e("Draggable", "Sim");
+//            markerVagaVazia.setTitle("Vaga Vazias");
+//            LatLng ln = getLocalizacaoVagaVaziaMarker();
+//            markerVagaVazia.setPosition(ln);
+//       } else {
+//            Log.e("Draggable","No");
+//        }
+//
+//        if( markerVagaOcupada.isDraggable()){
+//            Log.e("Draggable", "Sim");
+//            markerVagaOcupada.setTitle("Vaga Ocupadas");
+//            LatLng ln = getLocalizacaoVagaOcupadaMarker();
+//            markerVagaOcupada.setPosition(ln);
+//        } else {
+//            Log.e("Draggable","No");
+//        }
 
     }
 

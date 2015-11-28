@@ -47,7 +47,6 @@ public class Splash extends AppCompatActivity {
     //pega status de logado acesstoken!=null logado
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
-
             startActivity(intent);
         } else {
             callbackManager = CallbackManager.Factory.create();
@@ -57,6 +56,7 @@ public class Splash extends AppCompatActivity {
             loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
+
 
                     // App code
                     GraphRequest request = GraphRequest.newMeRequest(
