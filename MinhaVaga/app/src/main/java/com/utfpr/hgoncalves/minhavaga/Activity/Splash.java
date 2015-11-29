@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -12,15 +11,11 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.LoggingBehavior;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.utfpr.hgoncalves.minhavaga.Model.Usuario;
 import com.utfpr.hgoncalves.minhavaga.R;
-
-import org.json.JSONObject;
 
 import java.util.Arrays;
 //com.facebook.FacebookSdk
@@ -59,17 +54,17 @@ public class Splash extends AppCompatActivity {
 
 
                     // App code
-                    GraphRequest request = GraphRequest.newMeRequest(
-                            loginResult.getAccessToken(),
-                            new GraphRequest.GraphJSONObjectCallback() {
-                                @Override
-                                public void onCompleted(
-                                        JSONObject object,
-                                        GraphResponse response) {
-                                    // Application code
-                                    Log.v("LoginActivity", response.toString());
-                                }
-                            });
+//                    GraphRequest request = GraphRequest.newMeRequest(
+//                            loginResult.getAccessToken(),
+//                            new GraphRequest.GraphJSONObjectCallback() {
+//                                @Override
+//                                public void onCompleted(
+//                                        JSONObject object,
+//                                        GraphResponse response) {
+//                                    // Application code
+//                                    Log.v("LoginActivity", response.toString());
+//                                }
+//                            });
                     startActivity(intent);
 
                 }
@@ -94,12 +89,5 @@ public class Splash extends AppCompatActivity {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 }
 

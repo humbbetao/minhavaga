@@ -36,15 +36,11 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <activity android:name=".Activity.loginfacebook"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <!--<activity android:name=".Activity.loginfacebook" android:label="@string/app_name"-->
+        <!--<activity android:name=".Activity.loginfacebook"-->
+            <!--android:label="@string/app_name"-->
             <!--android:theme="@style/AppTheme.NoActionBar"></activity>-->
         <activity android:name=".Activity.Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Activity.MapsActivity" android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Activity.Splash" android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar">
