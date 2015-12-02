@@ -23,8 +23,26 @@
 
             <EditText
                 android:id="@+id/edtPesquisa"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
+                android:layout_marginLeft="5dp"
                 android:layout_height="match_parent"/>
+
+
+            <ImageButton
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:id="@+id/btnProcurar"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/search"
+                />
+            <ImageButton
+                android:layout_width="35dp "
+                android:layout_height="35dp"
+                android:id="@+id/btnAdd"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/add182"
+                />
+
 
         </android.support.v7.widget.Toolbar>
 
