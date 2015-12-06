@@ -19,8 +19,6 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.utfpr.hgoncalves.minhavaga.Model.Usuario;
 import com.utfpr.hgoncalves.minhavaga.R;
-
-import java.util.Arrays;
 //com.facebook.FacebookSdk
 
 public class Splash extends AppCompatActivity {
@@ -54,7 +52,8 @@ public class Splash extends AppCompatActivity {
 
                 callbackManager = CallbackManager.Factory.create();
                 info = (TextView) findViewById(R.id.info);
-                loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
+                loginButton = (LoginButton) findViewById(R.id.login_button);
+                //loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
                 loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
