@@ -10,8 +10,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:background="#1337ae">
+        android:background="#1337ae"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
 
         <android.support.v7.widget.Toolbar
@@ -23,25 +23,17 @@
 
             <EditText
                 android:id="@+id/edtPesquisa"
-                android:layout_width="220dp"
-                android:layout_marginLeft="5dp"
-                android:layout_height="match_parent"/>
+                android:layout_width="260dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp" />
 
 
             <ImageButton
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:id="@+id/btnProcurar"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/search"
-                />
-            <ImageButton
+                android:id="@+id/btnSearch"
                 android:layout_width="35dp "
                 android:layout_height="35dp"
-                android:id="@+id/btnAdd"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/add182"
-                />
+                android:layout_marginLeft="10dp"
+                android:background="@android:drawable/ic_search_category_default" />
 
 
         </android.support.v7.widget.Toolbar>
@@ -50,5 +42,13 @@
 
     <include layout="@layout/content_main22" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+
+        android:src="@drawable/add182" />
 
 </android.support.design.widget.CoordinatorLayout>
