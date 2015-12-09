@@ -21,11 +21,18 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <EditText
+            <!--<EditText-->
+                <!--android:id="@+id/edtPesquisa"-->
+                <!--android:layout_width="260dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginLeft="5dp" />-->
+
+            <AutoCompleteTextView
                 android:id="@+id/edtPesquisa"
-                android:layout_width="260dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal"
+                android:completionThreshold="3" />
 
 
             <ImageButton
