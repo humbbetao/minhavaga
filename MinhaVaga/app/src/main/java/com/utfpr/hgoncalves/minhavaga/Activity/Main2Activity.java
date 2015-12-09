@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.method.KeyListener;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,12 +76,20 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
 
                 String dePesquisa = edtBuscar.getText().toString();
+                String getPlaces = new GetPlaces().toString();
+                Log.e("ERRO", getPlaces);
+
                 //ve como passa essa string para o asynck ali embaixo, eh uma thread de pesquisa tem se qser assim
                 //pq se nao da pau no app
                 //ve tbm como pega a string do campo depois de tirar o focus
                 //no asynck eh uma request para o maps, ve se ta certo,
                 //to com sono pakas
                 // acho q vc consegue dodo;
+
+
+
+
+
 
             }
         });
@@ -115,7 +124,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
         });
 
-        edtBuscar.setOnFocusChangeListener(new View);
+       // edtBuscar.setOnFocusChangeListener(new View);
 
 
 //        GoogleMap map = mapFragment.getMap();
