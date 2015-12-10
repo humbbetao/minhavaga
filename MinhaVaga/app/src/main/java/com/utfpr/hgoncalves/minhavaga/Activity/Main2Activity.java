@@ -522,7 +522,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
         edtBuscar.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
+              public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     // Hide soft keyboard.
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -576,15 +576,53 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap map) {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(-24.043190, -52.378492), 6));
+                new LatLng(-24.043190, -52.378492), 16));
         map.addMarker(new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.number2green))
                 .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0515272,-52.3730823)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number6green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.422675,-52.1073004)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number9green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0452731,-52.3805947)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number7green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0403986,-52.37633)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number3green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
                 .position(new LatLng(-24.043190, -52.378492)));
         map.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number1red))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number1green))
                 .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
-                .position(new LatLng(-24.043190, -52.378491)));
+                .position(new LatLng(-24.0464488,-52.3816664)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number0red))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0394653,-52.3753081)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number9green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0388841,-52.372644)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number7green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0434311,-52.3730404)));
+        map.addMarker(new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number1green))
+                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+                .position(new LatLng(-24.0448714,-52.3718709)));
+
+
+//        map.addMarker(new MarkerOptions()
+//                .icon(BitmapDescriptorFactory.fromResource(R.drawable.number1red))
+//                .anchor(0.0f, 1.0f) // Anchors the marker on the bottom left
+//                .position(new LatLng(-24.043190, -52.378491)));
 
     }
 
