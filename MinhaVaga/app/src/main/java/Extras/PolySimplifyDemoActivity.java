@@ -23,7 +23,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.maps.android.PolyUtil;
+import com.utfpr.hgoncalves.minhavaga.Activity.PolyUtil;
 
 import java.util.ArrayList;
 import java.util.List;

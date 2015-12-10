@@ -22,7 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.maps.android.ui.IconGenerator;
+import com.utfpr.hgoncalves.minhavaga.Activity.IconGenerator;
 
 public class IconGeneratorDemoActivity extends BaseDemoActivity {
 

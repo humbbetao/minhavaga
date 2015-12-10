@@ -19,7 +19,7 @@ package Extras;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.maps.android.PolyUtil;
+import com.utfpr.hgoncalves.minhavaga.Activity.PolyUtil;
 
 import java.util.List;
 

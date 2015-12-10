@@ -21,12 +21,14 @@ import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.utfpr.hgoncalves.minhavaga.R;
 
 public abstract class BaseDemoActivity extends FragmentActivity {
     private GoogleMap mMap;
 
     protected int getLayoutId() {
-        return R.layout.map;
+//        return R.layout.map;
+        return R.layout.com_facebook_activity_layout;
     }
 
     @Override

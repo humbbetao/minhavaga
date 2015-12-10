@@ -1,18 +1,12 @@
 package com.utfpr.hgoncalves.minhavaga.Activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.method.KeyListener;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,48 +15,39 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.HttpRequestInitializer;
-import com.google.api.client.http.HttpResponse;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.JsonObjectParser;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.Key;
 import com.utfpr.hgoncalves.minhavaga.R;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import org.json.JSONException;
+
+import java.io.InputStream;
 import java.util.List;
+
+import Extras.MyItem;
+import Extras.MyItemReader;
 
 public class Main2Activity extends FragmentActivity implements OnMapReadyCallback {
 
 
-    private static final String PLACES_API_AUTOCOMPLETION = "Campo Mourão" ;
+//    private static final String PLACES_API_AUTOCOMPLETION = "Campo Mourão";
     private GoogleMap mMap;
-    private Marker markerVagaVazia;
-    private Marker markerVagaOcupada;
+//    private Marker markerVagaVazia;
+//    private Marker markerVagaOcupada;
     private ImageButton btnAdd;
     private ImageButton btnSearch;
     private EditText edtBuscar;
 
+    private ClusterManager<MyItem> mClusterManager;
 
-    private static final String PLACES_API_KEY = "AIzaSyB1k1X5cGfk1Wma3ewD2Xg-FmFSOOnK_J4";
+
+//    private static final String PLACES_API_KEY = "AIzaSyB1k1X5cGfk1Wma3ewD2Xg-FmFSOOnK_J4";
 
 
-    private static final HttpTransport HTTP_TRANSPORT = AndroidHttp.newCompatibleTransport();
-    private static final JsonFactory JSON_FACTORY = new JacksonFactory();
+//    private static final String PLACES_AUTOCOMPLETE_API = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
 
-    private static final String PLACES_AUTOCOMPLETE_API = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
-
-    protected static final int RESULT_CODE = 123;
-    private AutoCompleteTextView from;
-    private AutoCompleteTextView to;
+//    protected static final int RESULT_CODE = 123;
+//    private AutoCompleteTextView from;
+//    private AutoCompleteTextView to;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -77,18 +62,16 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         edtBuscar = (EditText) findViewById(R.id.edtPesquisa);
 
 
-        //to = (EditText) findViewById(R.id.to);
-//        Button btnLoadDirections = (Button) findViewById(R.id.load_directions);
 
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent data = new Intent();
-                data.putExtra("from", from.getText().toString());
-                data.putExtra("to", to.getText().toString());
-                Main2Activity.this.setResult(RESULT_CODE, data);
+//                Intent data = new Intent();
+////                data.putExtra("from", from.getText().toString());
+//                data.putExtra("to", to.getText().toString());
+//                Main2Activity.this.setResult(RESULT_CODE, data);
                 Main2Activity.this.finish();
             }
         });
@@ -107,42 +90,54 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
             }
         });
 
+//        mapFragment.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-24.043190, -52.378492), 10));
+//
+//        mClusterManager = new ClusterManager<MyItem>(this, mapFragment.getMap());
+//
+//        mapFragment.getMap().setOnCameraChangeListener((GoogleMap.OnCameraChangeListener) mClusterManager);
+//        try {
+//            readItems();
+//        } catch (JSONException e) {
+//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+//        }
+
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194?q=101+main+street");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                startActivity(mapIntent);
-
-
-                GenericUrl url = new GenericUrl(PLACES_API_AUTOCOMPLETION);
-                url.put("input", input);
-                url.put("key", PLACES_API_KEY);
-                url.put("sensor", false);
-
-
-                HttpRequestFactory requestFactory;
-                url  = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Fisher&key=[YOUR API KEY]&sensor=false"
-
-
-                HttpRequest request = requestFactory.buildGetRequest(url);
-
-                HttpResponse httpResponse = request.execute();
-                PlacesResult directionsResult = null;
-                try {
-                    directionsResult = httpResponse.parseAs(PlacesResult.class);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                List<Prediction> predictions = directionsResult.predictions;
-                for (Prediction prediction : predictions) {
-                    resultList.add(prediction.description);
-                }
-
+//
+//
+//                Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194?q=101+main+street");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                startActivity(mapIntent);
+//
+//
+//                GenericUrl url = new GenericUrl(PLACES_API_AUTOCOMPLETION);
+//                url.put("input", input);
+//                url.put("key", PLACES_API_KEY);
+//                url.put("sensor", false);
+//
+////
+////                HttpRequestFactory requestFactory;
+////                url  = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Fisher&key=[YOUR API KEY]&sensor=false"
+//
+//
+//                HttpRequest request = requestFactory.buildGetRequest(url);
+//
+//                HttpResponse httpResponse = request.execute();
+//                PlacesResult directionsResult = null;
+//                try {
+//                    directionsResult = httpResponse.parseAs(PlacesResult.class);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                List<Prediction> predictions = directionsResult.predictions;
+//                for (Prediction prediction : predictions) {
+//                    resultList.add(prediction.description);
+//                }
+//
             }
         });
 
@@ -159,11 +154,11 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
                 }
             }
 
-           // public void onFocus
+            // public void onFocus
 
         });
 
-       // edtBuscar.setOnFocusChangeListener(new View);
+        // edtBuscar.setOnFocusChangeListener(new View);
 
 
 //        GoogleMap map = mapFragment.getMap();
@@ -172,17 +167,16 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 //        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
 
-
-
 //        from = (AutoCompleteTextView) findViewById(R.id.from);
 //        to = (AutoCompleteTextView) findViewById(R.id.to);
 
         //   from.setText("Fisherman's Wharf, San Francisco, CA, United States");
 //        to.setText("The Moscone Center, Howard Street, San Francisco, CA, United States");
-        edtBuscar.setAdapter(new PlacesAutoCompleteAdapter(this, android.R.layout.simple_dropdown_item_1line));
-      //  to.setAdapter(new PlacesAutoCompleteAdapter(this, android.R.layout.simple_dropdown_item_1line));
+//        edtBuscar.setAdapter(new PlacesAutoCompleteAdapter(this, android.R.layout.simple_dropdown_item_1line));
+        //  to.setAdapter(new PlacesAutoCompleteAdapter(this, android.R.layout.simple_dropdown_item_1line));
 
     }
+
     @Override
     public void onMapReady(GoogleMap map) {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(
@@ -198,106 +192,42 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
     }
 
-    private class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-        private ArrayList<String> resultList;
-
-        public PlacesAutoCompleteAdapter(Context context, int textViewResourceId) {
-            super(context, textViewResourceId);
-        }
-
-        @Override
-        public int getCount() {
-            return resultList.size();
-        }
-
-        @Override
-        public String getItem(int index) {
-            return resultList.get(index);
-        }
-
-        @Override
-        public Filter getFilter() {
-            Filter filter = new Filter() {
-                @Override
-                protected FilterResults performFiltering(CharSequence constraint) {
-                    FilterResults filterResults = new FilterResults();
-                    if (constraint != null) {
-                        // Retrieve the autocomplete results.
-                        resultList = autocomplete(constraint.toString());
-
-                        // Assign the data to the FilterResults
-                        filterResults.values = resultList;
-                        filterResults.count = resultList.size();
-                    }
-                    return filterResults;
-                }
-
-                @Override
-                protected void publishResults(CharSequence constraint, FilterResults results) {
-                    if (results != null && results.count > 0) {
-                        notifyDataSetChanged();
-                    } else {
-                        notifyDataSetInvalidated();
-                    }
-                }
-            };
-            return filter;
-        }
-    }
-
-    private ArrayList<String> autocomplete(String input) {
-
-        ArrayList<String> resultList = new ArrayList<String>();
-
-        try {
-
-            HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(new HttpRequestInitializer() {
-                                                                                        @Override
-                                                                                        public void initialize(com.google.api.client.http.HttpRequest request) throws IOException {
-                                                                                            request.setParser(new JsonObjectParser(JSON_FACTORY));
-                                                                                        }
-
-//                                                                                        @Override
-//                                                                                        public void initialize(HttpRequest request) {
-//
-//                                                                                        }
-                                                                                    }
-            );
-
-            GenericUrl url = new GenericUrl(PLACES_AUTOCOMPLETE_API);
-            url.put("input", input);
-            url.put("key", PLACES_API_KEY);
-            url.put("sensor", false);
-
-            com.google.api.client.http.HttpRequest request = requestFactory.buildGetRequest(url);
-            com.google.api.client.http.HttpResponse httpResponse = request.execute();
-            PlacesResult directionsResult = httpResponse.parseAs(PlacesResult.class);
-
-            List<Prediction> predictions = directionsResult.predictions;
-            for (Prediction prediction : predictions) {
-                resultList.add(prediction.description);
+    private void readItems() throws JSONException {
+        InputStream inputStream = getResources().openRawResource(R.raw.gtm_analytics);
+        List<MyItem> items = new MyItemReader().read(inputStream);
+        for (int i = 0; i < 10; i++) {
+            double offset = i / 60d;
+            for (MyItem item : items) {
+                LatLng position = item.getPosition();
+                double lat = position.latitude + offset;
+                double lng = position.longitude + offset;
+                MyItem offsetItem = new MyItem(lat, lng);
+                mClusterManager.addItem(offsetItem);
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
-        return resultList;
     }
 
-    public static class PlacesResult {
-
-        @Key("predictions")
-        public List<Prediction> predictions;
+    protected void startDemo() {
 
     }
 
-    public static class Prediction {
-        @Key("description")
-        public String description;
+}
 
-        @Key("id")
-        public String id;
-
-    }
+//    public static class PlacesResult {
+//
+//        @Key("predictions")
+//        public List<Prediction> predictions;
+//
+//    }
+//
+//    public static class Prediction {
+//        @Key("description")
+//        public String description;
+//
+//        @Key("id")
+//        public String id;
+//
+//    }
 
 
 //
@@ -536,5 +466,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 //            return filter;
 //        }
 //    }
-}
+
+
+
 

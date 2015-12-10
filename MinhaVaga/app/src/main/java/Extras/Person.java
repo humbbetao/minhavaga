@@ -17,7 +17,7 @@
 package Extras;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.clustering.ClusterItem;
+import com.utfpr.hgoncalves.minhavaga.Activity.ClusterItem;
 
 public class Person implements ClusterItem {
     public final String name;

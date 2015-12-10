@@ -26,8 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Tile;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.android.gms.maps.model.TileProvider;
-import com.google.maps.android.geometry.Point;
-import com.google.maps.android.projection.SphericalMercatorProjection;
+import com.utfpr.hgoncalves.minhavaga.Activity.Point;
+import com.utfpr.hgoncalves.minhavaga.Activity.SphericalMercatorProjection;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
