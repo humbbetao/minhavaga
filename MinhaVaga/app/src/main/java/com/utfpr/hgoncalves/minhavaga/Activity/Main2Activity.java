@@ -7,11 +7,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.method.KeyListener;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -32,12 +32,15 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import Extras.MyItem;
+import Extras.MyItemReader;
 
 public class Main2Activity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -59,8 +62,8 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 //    private static final String PLACES_AUTOCOMPLETE_API = "https://maps.googleapis.com/maps/api/place/autocomplete/json";
 
 //    protected static final int RESULT_CODE = 123;
-//    private AutoCompleteTextView from;
-//    private AutoCompleteTextView to;
+    private AutoCompleteTextView from;
+    private AutoCompleteTextView to;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -69,39 +72,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 //                .findFragmentById(R.id.map);
 //        mapFragment.getMapAsync((OnMapReadyCallback) this);
 //
-//
-//        btnAdd = (ImageButton) findViewById(R.id.btnAdd);
-//        btnSearch = (ImageButton) findViewById(R.id.btnSearch);
-//        edtBuscar = (EditText) findViewById(R.id.edtPesquisa);
-//
-//
-//
-//
-//        btnSearch.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-////                Intent data = new Intent();
-//////                data.putExtra("from", from.getText().toString());
-////                data.putExtra("to", to.getText().toString());
-////                Main2Activity.this.setResult(RESULT_CODE, data);
-//                Main2Activity.this.finish();
-//            }
-//        });
-//
-//        final KeyListener originalKeyListener = edtBuscar.getKeyListener();
-//        edtBuscar.setKeyListener(null);
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                edtBuscar.setKeyListener(originalKeyListener);
-//                edtBuscar.requestFocus();
-//                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//                imm.showSoftInput(edtBuscar, InputMethodManager.SHOW_IMPLICIT);
-//
-//
-//            }
-//        });
+
 //
 ////        mapFragment.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-24.043190, -52.378492), 10));
 ////
@@ -495,6 +466,20 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
         btnSearch = (ImageButton) findViewById(R.id.btnSearch);
         edtBuscar = (EditText) findViewById(R.id.edtPesquisa);
 
+
+//        mapFragment.getMap().moveCamera(
+//                CameraUpdateFactory.newLatLngZoom(new LatLng(-24.043190, -52.378492), 10));
+//
+//        mClusterManager = new ClusterManager<MyItem>(this, mapFragment.getMap());
+//
+//        mapFragment.getMap().setOnCameraChangeListener((GoogleMap.OnCameraChangeListener) mClusterManager);
+//        try {
+//            readItems();
+//        } catch (JSONException e) {
+//            Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show();
+//        }
+
+
         final KeyListener originalKeyListener = edtBuscar.getKeyListener();
         edtBuscar.setKeyListener(null);
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -506,9 +491,9 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
                 imm.showSoftInput(edtBuscar, InputMethodManager.SHOW_IMPLICIT);
 
 
-                String dePesquisa = edtBuscar.getText().toString();
-                String getPlaces = new GetPlaces().toString();
-                Log.e("ERRO", getPlaces);
+//                String dePesquisa = edtBuscar.getText().toString();
+//                String getPlaces = new GetPlaces().toString();
+//                Log.e("ERRO", getPlaces);
 
                 //ve como passa essa string para o asynck ali embaixo, eh uma thread de pesquisa tem se qser assim
                 //pq se nao da pau no app
@@ -551,7 +536,7 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 
         });
 
-        // edtBuscar.setOnFocusChangeListener(new View);
+//         edtBuscar.setOnFocusChangeListener(new View);
 
 
 //        GoogleMap map = mapFragment.getMap();
@@ -560,6 +545,22 @@ public class Main2Activity extends FragmentActivity implements OnMapReadyCallbac
 //        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
+
+    private void readItems() throws JSONException {
+        InputStream inputStream = getResources().openRawResource(R.raw.gtm_analytics);
+        List<MyItem> items = new MyItemReader().read(inputStream);
+        for (int i = 0; i < 10; i++) {
+            double offset = i / 60d;
+            for (MyItem item : items) {
+                LatLng position = item.getPosition();
+                double lat = position.latitude + offset;
+                double lng = position.longitude + offset;
+                MyItem offsetItem = new MyItem(lat, lng);
+                mClusterManager.addItem(offsetItem);
+            }
+        }
+    }
+
 
     public LatLng getLocalizacaoVagaVaziaMarker() {
         LatLng latlonge = markerVagaVazia.getPosition();
